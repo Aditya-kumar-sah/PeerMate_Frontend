@@ -1,5 +1,5 @@
 {
-  "proxy": "https://peermate-backend.onrender.com/api/v1/2024",
+  
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
