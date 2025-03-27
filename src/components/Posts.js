@@ -73,7 +73,7 @@ const Posts = (props) => {
 
   const handleLike = async () => {
     try {
-      if (props.post.likes.includes(currUser._id)) {
+      if (props.post.likes.includes(currUser?._id)) {
         await axios.delete(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/post/removeLike/${props.post._id}`,
           {
             headers: {
