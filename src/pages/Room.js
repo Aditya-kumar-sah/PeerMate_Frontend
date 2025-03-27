@@ -16,7 +16,7 @@ const Room = () => {
         if (user) {
             const fetchUser = async () => {
                 try {
-                    const userCred = await axios.get("/user/getUser", {
+                    const userCred = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/getUser`, {
                         headers: {
                             Authorization: `Bearer ${user.accessToken}`,
                         },
@@ -39,7 +39,7 @@ const Room = () => {
         if (user) {
             const fetchRoom = async () => {
                 try {
-                    const room = await axios.get(`/roomate/getRoom/${id}`, {
+                    const room = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/roomate/getRoom/${id}`, {
                         headers: {
                             Authorization: `Bearer ${user.accessToken}`
                         }
@@ -85,7 +85,7 @@ const Room = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`/roomate/deleteRoom/${id}`, {
+            await axios.delete(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/roomate/deleteRoom/${id}`, {
                 headers: {
                     Authorization: `Bearer ${user?.accessToken}`
                 }

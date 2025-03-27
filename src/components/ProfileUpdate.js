@@ -26,7 +26,7 @@ const ProfileUpdate = () => {
         if (user) {
             const fetchUser = async () => {
                 try {
-                    const userCred = await axios.get("/user/getUser", {
+                    const userCred = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/getUser`, {
                         headers: {
                             Authorization: `Bearer ${user.accessToken}`,
                         },
@@ -58,7 +58,7 @@ const ProfileUpdate = () => {
 
     const updateProfile = async () => {
         try {
-            const updatedUser = await axios.put("/user/updateUser", {
+            const updatedUser = await axios.put(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/updateUser`, {
                 name,
                 branch,
                 interests,
@@ -90,7 +90,7 @@ const ProfileUpdate = () => {
         formData.append('file', file);
 
         try {
-            const updatedUser = await axios.put("/user/updateProfilePhoto", formData, {
+            const updatedUser = await axios.put(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/updateProfilePhoto`, formData, {
                 headers: {
                     Authorization: `Bearer ${user?.accessToken}`,
                     'Content-Type': 'multipart/form-data'

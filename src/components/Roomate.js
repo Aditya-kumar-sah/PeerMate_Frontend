@@ -38,7 +38,7 @@ const Roomate = () => {
         formData.append("files", roomphotos[i]);
       }
 
-      await axios.post("/roomate/create", formData, {
+      await axios.post(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/roomate/create`, formData, {
         headers: {
           Authorization: `Bearer ${user?.accessToken}`,
           'Content-Type': 'multipart/form-data',

@@ -11,12 +11,13 @@ const AllRooms = ({ matches }) => {
   const [allRooms, setAllRooms] = useState([]);
   const [loading, setLoading] = useState(false);
 
+
   useEffect(() => {
     if (user) {
       const fetchAllRooms = async () => {
         setLoading(true);
         try {
-          const allRoom = await axios.get(`/roomate/getAllRooms/${firstMatch}/${secondMatch}`,
+          const allRoom = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/roomate/getAllRooms/${firstMatch}/${secondMatch}`,
             {
               headers: {
                 Authorization: `Bearer ${user?.accessToken}`

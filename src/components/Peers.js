@@ -23,7 +23,7 @@ const Peers = () => {
      if(user){
         const getAllPost = async () =>{
           try {
-            const allPosts = await axios.get("/post/getAllPost",
+            const allPosts = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/post/getAllPost`,
               {
                 headers: {
                   Authorization: `Bearer ${user?.accessToken}`
@@ -58,7 +58,7 @@ const Peers = () => {
     formData.append('thought', thought);
     
     try {
-        await axios.post("/post/uploadPost", formData, {
+        await axios.post(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/post/uploadPost`, formData, {
             headers: {
                 Authorization: `Bearer ${user?.accessToken}`,  
                 'Content-Type': 'multipart/form-data'        
@@ -80,7 +80,7 @@ const Peers = () => {
     if (user) {
       const fetchPeers = async () => {
         try {
-          const peers = await axios.get(`/user/getPeer/${firstMatch}/${secondMatch}`,
+          const peers = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/getPeer/${firstMatch}/${secondMatch}`,
             {
               headers: {
                 Authorization: `Bearer ${user?.accessToken}`
@@ -102,7 +102,7 @@ const Peers = () => {
     if(user){
       const fetchFriends = async () =>{
            try {
-            const friends = await axios.get("/user/getFriend",
+            const friends = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/getFriend`,
               {
                 headers: {
                   Authorization: `Bearer ${user?.accessToken}`

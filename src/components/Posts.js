@@ -15,7 +15,7 @@ const Posts = (props) => {
     if (user) {
       const fetchUser = async () => {
         try {
-          const userCred = await axios.get("/user/getUser", {
+          const userCred = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/getUser`, {
             headers: {
               Authorization: `Bearer ${user.accessToken}`,
             },
@@ -36,7 +36,7 @@ const Posts = (props) => {
   useEffect(() => {
     const getUserDetails = async () => {
       try {
-        const userDetails = await axios.get(`/user/getUser/${props.post.userid}`,
+        const userDetails = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/getUser/${props.post.userid}`,
           {
             headers: {
               Authorization: `Bearer ${user?.accessToken}`
@@ -74,7 +74,7 @@ const Posts = (props) => {
   const handleLike = async () => {
     try {
       if (props.post.likes.includes(currUser._id)) {
-        await axios.delete(`/post/removeLike/${props.post._id}`,
+        await axios.delete(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/post/removeLike/${props.post._id}`,
           {
             headers: {
               Authorization: `Bearer ${user?.accessToken}`,
@@ -85,7 +85,7 @@ const Posts = (props) => {
         setLike(like - 1);
       }
       else {
-        await axios.put(`/post/addLike/${props.post._id}`, null,
+        await axios.put(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/post/addLike/${props.post._id}`, null,
           {
             headers: {
               Authorization: `Bearer ${user?.accessToken}`,
@@ -102,7 +102,7 @@ const Posts = (props) => {
 
   const handledelete = async () =>{
     try {
-      await axios.delete(`/post/deletePost/${props.post._id}`,
+      await axios.delete(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/post/deletePost/${props.post._id}`,
         {
           headers: {
             Authorization: `Bearer ${user?.accessToken}`,

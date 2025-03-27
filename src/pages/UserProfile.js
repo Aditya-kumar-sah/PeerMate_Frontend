@@ -19,7 +19,7 @@ const UserProfile = () => {
     if (user) {
       const fetchPost = async () => {
         try {
-          const postCred = await axios.get(`/post/userPost/${id}`, {
+          const postCred = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/post/userPost/${id}`, {
             headers: {
               Authorization: `Bearer ${user?.accessToken}`,
             },
@@ -42,7 +42,7 @@ const UserProfile = () => {
     if (user) {
       const fetchUser = async () => {
         try {
-          const userCred = await axios.get("/user/getUser", {
+          const userCred = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/getUser`, {
             headers: {
               Authorization: `Bearer ${user.accessToken}`,
             },
@@ -64,7 +64,7 @@ const UserProfile = () => {
     const fetchPeer = async () => {
       if (user) {
         try {
-          const peerCred = await axios.get(`/user/getPeerDetails/${id}`, {
+          const peerCred = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/getPeerDetails/${id}`, {
             headers: {
               Authorization: `Bearer ${user.accessToken}`,
             },
@@ -85,7 +85,7 @@ const UserProfile = () => {
   const handleAddFriend = async () => {
     setLoading(true);
     try {
-      await axios.put(`/user/addFriends/${currPeer._id}`, null,
+      await axios.put(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/addFriends/${currPeer._id}`, null,
         {
           headers: {
             Authorization: `Bearer ${user?.accessToken}`
@@ -104,7 +104,7 @@ const UserProfile = () => {
   const handleRemoveFriend = async () => {
     setLoading(true);
     try {
-      await axios.put(`/user/removeFriend/${currPeer._id}`, null,
+      await axios.put(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/removeFriend/${currPeer._id}`, null,
         {
           headers: {
             Authorization: `Bearer ${user?.accessToken}`

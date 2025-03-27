@@ -11,7 +11,7 @@ const Header = () => {
       if (user) {
           const fetchUser = async () => {
               try {
-                  const userCred = await axios.get("/user/getUser", {
+                  const userCred = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/getUser`, {
                       headers: {
                           Authorization: `Bearer ${user.accessToken}`,
                       },

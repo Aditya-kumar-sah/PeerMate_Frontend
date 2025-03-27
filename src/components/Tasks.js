@@ -19,7 +19,7 @@ const Tasks = () => {
         const fetchTasks = async () => {
             if (user) {
                 try {
-                    const allTasks = await axios.get("/task/getTasks", {
+                    const allTasks = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/task/getTasks`, {
                         headers: {
                             Authorization: `Bearer ${user.accessToken}`,
                         },
@@ -50,7 +50,7 @@ const Tasks = () => {
     const handleSubmit = async () => {
         try {
             setLoading(true);
-            const newTask = await axios.post("/task/createTask", {
+            const newTask = await axios.post(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/task/createTask`, {
                 heading,
                 content
             }
@@ -119,7 +119,7 @@ const Tasks = () => {
     const deleteTasks = async () => {
         try {
             setLoading(true);
-            const newTasks = await axios.delete(`/task/deleteTask/${currTask._id}`, {
+            const newTasks = await axios.delete(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/task/deleteTask/${currTask._id}`, {
                 headers: {
                     Authorization: `Bearer ${user?.accessToken}`  // Add the Authorization header
                 }

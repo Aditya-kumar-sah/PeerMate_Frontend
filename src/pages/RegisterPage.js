@@ -29,7 +29,7 @@ const RegisterPage = () => {
   const handleSubmitEmailAndPassword = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/user/register", {
+      await axios.post(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/register`, {
         email, name, branch, yearofpassout
       })
       await createUserWithEmailAndPassword(auth, email, password);

@@ -15,7 +15,7 @@ const MyRooms = () => {
       const fetchAllRooms = async () => {
         setLoading(true);
         try {
-          const allRoom = await axios.get(`/roomate/getMyRoom`,
+          const allRoom = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/roomate/getMyRoom`,
             {
               headers: {
                 Authorization: `Bearer ${user?.accessToken}`
