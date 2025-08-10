@@ -130,7 +130,7 @@ const UserProfile = () => {
   return (
     <div className="flex flex-col absolute inset-0">
     <Header/>
-    <div className='h-auto w-full flex flex-col gap-2 items-center bg-slate-200  '>
+    <div className='h-auto w-full flex flex-col gap-2 items-center'>
       <div className='  h-auto  flex   items-center justify-center w-[100%] px-4 py-3 rounded-md '>
         <div className='flex flex-col lg:flex-row h-auto items-center justify-center w-[100%] '>
           <div className=' flex lg:flex-col  rounded-md h-auto justify-center w-full lg:w-[20%] items-center gap-10'>
