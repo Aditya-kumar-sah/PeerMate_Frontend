@@ -28,6 +28,11 @@ const RegisterPage = () => {
 
   const handleSubmitEmailAndPassword = async (e) => {
     e.preventDefault();
+    
+    if (password.length < 6) {
+     return alert("Password must be at least 6 characters");
+    }
+
     try {
       await axios.post(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/register`, {
         email, name, branch, yearofpassout
