@@ -18,6 +18,8 @@ const RegisterPage = () => {
   const [branch, setBranch] = useState("");
   const [yearofpassout, setYearOfPassout] = useState(0);
 
+  const [loading,setLoading] = useState(false);
+
   const {user} = useUserContext();
 
   useEffect(() => {
@@ -34,11 +36,13 @@ const RegisterPage = () => {
     }
 
     try {
+      setLoading(true);
       await axios.post(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/register`, {
         email, name, branch, yearofpassout
       })
       await createUserWithEmailAndPassword(auth, email, password);
       navigate("/login")
+      setLoading(false);
 
     } catch (error) {
       console.log(error);
