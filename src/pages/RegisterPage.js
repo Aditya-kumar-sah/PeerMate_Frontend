@@ -50,6 +50,14 @@ const RegisterPage = () => {
     }
   }
 
+   if(loading){
+        return (
+            <div className='bg-purple-400 fixed bottom-0 left-0 right-0 top-0 flex items-center justify-center'>
+                 <div className='text-white font-bold text-2xl'>Loading...</div>
+            </div>
+        );
+    }
+
   return (
     <div className="flex justify-center items-center  h-auto mt-0 w-full bg-purple-400 ">
       <div className="border border-gray-500 rounded-[5px] my-10 p-10 h-[90%] w-[70%] md:w-[50%] lg:h-auto lg:w-[30%] flex flex-col items-center gap-6 bg-purple-500 overflow-y-auto scrollbar-none">
