@@ -6,42 +6,41 @@ import Header from '../components/Header';
 import Profile from '../components/Profile';
 
 const HomePage = () => {
+  const { user } = useUserContext();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-    const { user } = useUserContext();
-    const [loading,setLoading] = useState(false);
-    const navigate = useNavigate();
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      if (!user) {
+        navigate("/login")
+      } else {
+        setLoading(false);
+      }
+    }, 1000)
+  }, [user, navigate])
 
-
-    useEffect(() => {
-        setLoading(true);
-        setTimeout(()=>{
-            if (!user) {
-                navigate("/login")
-            }
-            else{
-                setLoading(false);
-            }
-        },1000)
-    }, [user, navigate])
-
-
-    if(loading){
-        return (
-            <div className='bg-purple-400 fixed bottom-0 left-0 right-0 top-0 flex items-center justify-center'>
-                 <div className='text-white font-bold text-2xl'>Loading...</div>
-            </div>
-        );
-    }
-    
+  if (loading) {
     return (
-        <div className='absolute inset-0 flex flex-col items-center '>
-            <Header/>
-            <Profile/>
-            <div className='bg-purple-500 w-[100%] h-[30%]  p-11  flex items-center justify-center text-white font-bold text-xl rounded-t-md '>
-                @AdityaTech
-            </div>
-        </div>
-    )
+      <div className="bg-gradient-to-r from-purple-500 to-purple-400 fixed inset-0 flex items-center justify-center">
+        <div className="text-white font-extrabold text-3xl animate-pulse">Loading...</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col bg-purple-50">
+      <Header />
+      <main className="flex-grow flex justify-center items-start px-4 sm:px-6 lg:px-12 py-6">
+        <Profile />
+      </main>
+      <footer className="bg-gradient-to-r from-purple-600 to-purple-500 w-full py-6 flex items-center justify-center text-white font-semibold text-lg sm:text-xl rounded-t-md shadow-inner">
+        @AdityaTech
+      </footer>
+    </div>
+  )
 }
 
 export default HomePage
+

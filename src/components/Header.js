@@ -4,39 +4,46 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Header = () => {
-    const {currUser,user,setCurrUser} = useUserContext();
+  const { currUser, user, setCurrUser } = useUserContext();
 
+  useEffect(() => {
+    if (user) {
+      const fetchUser = async () => {
+        try {
+          const userCred = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/getUser`, {
+            headers: {
+              Authorization: `Bearer ${user.accessToken}`,
+            },
+          })
 
-    useEffect(() => {
-      if (user) {
-          const fetchUser = async () => {
-              try {
-                  const userCred = await axios.get(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/getUser`, {
-                      headers: {
-                          Authorization: `Bearer ${user.accessToken}`,
-                      },
-                  })
-
-                  if (userCred) {
-                      setCurrUser(userCred.data);
-                  }
-              } catch (error) {
-                  alert("Something wrong occurred!")
-              }
+          if (userCred) {
+            setCurrUser(userCred.data);
           }
-          fetchUser();
+        } catch (error) {
+          alert("Something wrong occurred!")
+        }
       }
+      fetchUser();
+    }
   }, [user])
 
   return (
-    <div className='flex flex-col  lg:flex-row justify-center lg:justify-around items-center h-auto  gap-4  w-[100%] px-6 py-4 bg-purple-500'>
-       <div className='flex flex-col items-center lg:flex-row gap-3 h-auto lg:h-full w-full lg:w-[50%] text-white font-bold'>
-          <div className='text-xl'><Link to="/home" >Home</Link></div>
-          <div className='text-xl'><Link to="/peers" >Peers</Link></div>
-          <div className='text-xl'><Link to="/roomate" >Roomate</Link></div>
-       </div>
-       <div className='text-white text-center font-bold text-2xl w-full lg:w-[50%] h-auto lg:h-full lg:text-right' >{currUser?.name}</div>
-    </div>
+    <header className="w-full bg-gradient-to-r from-purple-600 to-purple-500 shadow-md">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+        
+       
+        <nav className="flex flex-col sm:flex-row items-center gap-4 text-white font-semibold text-lg">
+          <Link to="/home" className="hover:text-yellow-300 transition">Home</Link>
+          <Link to="/peers" className="hover:text-yellow-300 transition">Peers</Link>
+          <Link to="/roomate" className="hover:text-yellow-300 transition">Roommate</Link>
+        </nav>
+
+      
+        <div className="text-white font-bold text-xl sm:text-2xl text-center lg:text-right w-full lg:w-auto">
+          {currUser?.name}
+        </div>
+      </div>
+    </header>
   )
 }
 

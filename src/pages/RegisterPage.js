@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { useState } from "react";
+import React, { useEffect, useState } from 'react'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 import { app } from "../firebaseConfig/Firebase"
 import axios from "axios"
@@ -10,17 +9,14 @@ const auth = getAuth(app);
 
 const RegisterPage = () => {
   const navigate = useNavigate();
-
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [branch, setBranch] = useState("");
   const [yearofpassout, setYearOfPassout] = useState(0);
+  const [loading, setLoading] = useState(false);
 
-  const [loading,setLoading] = useState(false);
-
-  const {user} = useUserContext();
+  const { user } = useUserContext();
 
   useEffect(() => {
     if (user) {
@@ -30,11 +26,9 @@ const RegisterPage = () => {
 
   const handleSubmitEmailAndPassword = async (e) => {
     e.preventDefault();
-    
     if (password.length < 6) {
-     return alert("Password must be at least 6 characters");
+      return alert("Password must be at least 6 characters");
     }
-
     try {
       setLoading(true);
       await axios.post(`${process.env.REACT_APP_BACKENDURL}/api/v1/2024/user/register`, {
@@ -43,7 +37,6 @@ const RegisterPage = () => {
       await createUserWithEmailAndPassword(auth, email, password);
       navigate("/login")
       setLoading(false);
-
     } catch (error) {
       console.log(error);
       alert("Registeration failed!")
@@ -51,37 +44,73 @@ const RegisterPage = () => {
     }
   }
 
-   if(loading){
-        return (
-            <div className='bg-purple-400 fixed bottom-0 left-0 right-0 top-0 flex items-center justify-center'>
-                 <div className='text-white font-bold text-2xl'>Loading...</div>
-            </div>
-        );
-    }
+  if (loading) {
+    return (
+      <div className="bg-purple-400 fixed inset-0 flex items-center justify-center">
+        <div className="text-white font-extrabold text-2xl sm:text-3xl animate-pulse">Loading...</div>
+      </div>
+    );
+  }
 
   return (
-    <div className="flex justify-center items-center  h-auto mt-0 w-full bg-purple-400 ">
-      <div className="border border-gray-500 rounded-[5px] my-10 p-10 h-[90%] w-[70%] md:w-[50%] lg:h-auto lg:w-[30%] flex flex-col items-center gap-6 bg-purple-500 overflow-y-auto scrollbar-none">
-        <div className="text-gray-100 font-bold text-3xl text-center">Register</div>
-        <div className="w-full ">
-          <input className="px-3 py-2 border border-grar-400 rounded-[10px] w-full outline-none" placeholder='Email' type="email" value={email} onChange={e => setEmail(e.target.value)} name="email" />
-        </div>
-        <div className="w-full ">
-          <input className="px-3 py-2 border border-grar-400 w-full rounded-[10px] outline-none" placeholder='Password (atleast 6 chars)' type="password" value={password} onChange={e => setPassword(e.target.value)} name="password" />
-        </div>
-        <div className="w-full ">
-          <input className="px-3 py-2 border border-grar-400 w-full rounded-[10px] outline-none" placeholder='Name' type="text" value={name} onChange={e => setName(e.target.value)} name="name" />
-        </div>
-        <div className="w-full ">
-          <input className="px-3 py-2 border border-grar-400 w-full rounded-[10px] outline-none" placeholder='Branch' type="text" value={branch} onChange={e => setBranch(e.target.value)} name="branch" />
-        </div>
-        <div className="w-full">
-          <input className="px-3 py-2 border border-grar-400 w-full rounded-[10px] outline-none" placeholder='Year of passout' type="number" value={yearofpassout} onChange={e => setYearOfPassout(e.target.value)} name="yearofpassout" />
-        </div>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-400 to-purple-600 px-3 sm:px-4">
+      <div className="w-full max-w-sm sm:max-w-md bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl p-6 sm:p-8 flex flex-col gap-5 sm:gap-6">
+        <h2 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold text-center">Register</h2>
 
-        <div className='w-full'><button className="border w-full border-gray-400 rounded-[5px] px-3 py-1 bg-blue-600 text-white font-bold" onClick={handleSubmitEmailAndPassword}>Register</button></div>
+        <input
+          className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl w-full outline-none bg-white/20 text-white placeholder-white/70 focus:ring-2 focus:ring-purple-300 text-sm sm:text-base"
+          placeholder="Email"
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          name="email"
+        />
+        <input
+          className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl w-full outline-none bg-white/20 text-white placeholder-white/70 focus:ring-2 focus:ring-purple-300 text-sm sm:text-base"
+          placeholder="Password (at least 6 chars)"
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          name="password"
+        />
+        <input
+          className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl w-full outline-none bg-white/20 text-white placeholder-white/70 focus:ring-2 focus:ring-purple-300 text-sm sm:text-base"
+          placeholder="Name"
+          type="text"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          name="name"
+        />
+        <input
+          className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl w-full outline-none bg-white/20 text-white placeholder-white/70 focus:ring-2 focus:ring-purple-300 text-sm sm:text-base"
+          placeholder="Branch"
+          type="text"
+          value={branch}
+          onChange={e => setBranch(e.target.value)}
+          name="branch"
+        />
+        <input
+          className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl w-full outline-none bg-white/20 text-white placeholder-white/70 focus:ring-2 focus:ring-purple-300 text-sm sm:text-base"
+          placeholder="Year of passout"
+          type="number"
+          value={yearofpassout}
+          onChange={e => setYearOfPassout(e.target.value)}
+          name="yearofpassout"
+        />
 
-        <div className="text-white font-bold">Already Registered? <Link className='text-purple-800' to="/login">Login</Link></div>
+        <button
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold sm:font-bold py-2.5 sm:py-3 rounded-xl transition-all duration-300 shadow-md text-sm sm:text-base"
+          onClick={handleSubmitEmailAndPassword}
+        >
+          Register
+        </button>
+
+        <p className="text-white text-center text-sm sm:text-base">
+          Already Registered?{" "}
+          <Link to="/login" className="text-yellow-300 font-semibold hover:underline">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   )
