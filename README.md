@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+PeerMate is a social networking web app built for college students to connect with peers based on shared interests, career goals, and hobbies.  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# PeerMate (Frontend)
 
-## Available Scripts
+This repository contains the **frontend** built using **React** and **Tailwind CSS**.  
+You can find the **backend repository here**: [PeerMate Backend](https://github.com/Aditya-kumar-sah/PeerMate_Backend).
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 👥 **Connect with peers** – Find students with similar academic, career, and sports interests.  
+- 📰 **Personalized feed** – See posts from your friends, like them, and share your own experiences.  
+- 🛏 **Roommate finder** – Match with potential roommates who share your lifestyle and interests.  
+- 🔒 **Secure Authentication** – User login and registration handled via **Firebase Authentication**.  
+- 🎨 **Modern UI** – Built with **React** and styled using **Tailwind CSS** for a clean and responsive experience.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠 Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend:** React, Tailwind CSS  
+- **Auth:** Firebase Authentication  
+- **Backend:** Node.js, Express, MongoDB (see [PeerMate Backend](https://github.com/Aditya-kumar-sah/PeerMate_Backend))
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ⚡ Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+git clone https://github.com/Aditya-kumar-sah/PeerMate_Frontend.git
 
-### `npm run eject`
+cd PeerMate_Frontend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Create a Firebase project on Firebase Console and Add your Firebase config in .env
+Add REACT_APP_BACKENDURL in your .env which is backend url
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+npm start
