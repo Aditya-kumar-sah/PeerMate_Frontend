@@ -34,7 +34,7 @@ cd PeerMate_Frontend
 
 npm install
 
-Create a Firebase project on Firebase Console and Add your Firebase config in .env
+Create a Firebase project on Firebase Console and Add your Firebase config in .env <br>
 Add REACT_APP_BACKENDURL in your .env which is backend url
 
 npm start
